@@ -1,6 +1,6 @@
 import { Text, View } from "react-native";
 
-const details = () => {
+const meal = () => {
   return (
     <View
       style={{
@@ -14,4 +14,4 @@ const details = () => {
   );
 };
 
-export default details;
+export default meal;

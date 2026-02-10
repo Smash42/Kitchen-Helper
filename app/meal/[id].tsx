@@ -9,7 +9,12 @@ const details = () => {
         alignItems: "center",
       }}
     >
-      <Text>Edit app/index.tsx to edit this screen.</Text>
+      <Text>Id. </Text>
+      <Text>
+        {" "}
+        Meal Title Category labels Ingredients list Cooking instructions
+        Buttons: Add to Favorites, Archive
+      </Text>
     </View>
   );
 };

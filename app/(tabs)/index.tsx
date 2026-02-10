@@ -10,9 +10,10 @@ export default function Index() {
         alignItems: "center",
       }}
     >
-      <Text>Edit app/index.tsx to edit this screen.</Text>
+      <Text>Kitchen Helper</Text>
 
       <Link href="/favorites" />
+      <Text> Category selections for dinners. Meat, Meal, Cook Style.</Text>
     </View>
   );
 }
