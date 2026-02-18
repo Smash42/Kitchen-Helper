@@ -11,8 +11,13 @@ const Meals = () => {
         <View className="flex-1 justify-center items-center">
           <Text className="text-5xl mt-20 text-white"> Kitchen Helper</Text>
           <Text className="text-3xl mt-5 text-white">Meals</Text>
+          <Text className="text-2xl mt-5 text-white p-2">
+            {" "}
+            Select a meal from below to see the respective ingredients and
+            instructions
+          </Text>
         </View>
-        <View>
+        <View className="p-2">
           {mealData.map((meal) => (
             <Link key={meal.id} href={`/meal/${meal.id}`} className="mt-5">
               <Text className="text-2xl text-yellow-200 p-2">

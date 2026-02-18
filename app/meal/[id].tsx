@@ -17,7 +17,9 @@ const details = () => {
         <Text className="flex-1 mt-20 text-4xl font-bold text-center">
           {meal.title}
         </Text>
-        <Text>Buttons: Add to Favorites</Text>
+        <Text className="flex-1 mt-5 text-xl text-center">
+          Buttons: Add to Favorites
+        </Text>
         <Text className="flex-1 mt-10 text-2xl font-bold text-center">
           {" "}
           Ingredients

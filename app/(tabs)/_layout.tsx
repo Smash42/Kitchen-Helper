@@ -4,7 +4,7 @@ import { Image, ImageBackground, Text, View } from "react-native";
 const homeIcon = require("../../assets/icons/home.png");
 const highlightIcon = require("../../assets/images/highlight.png");
 const searchIcon = require("../../assets/icons/search.png");
-const heartIcon = require("../../assets/icons/heart.png");
+const heartIcon = require("../../assets/icons/heartOutline.png");
 
 const TabIcon = ({ focused, icon, title }: any) => {
   if (focused) {
@@ -39,14 +39,13 @@ const _layout = () => {
           ),
         }}
       />
+
       <Tabs.Screen
-        name="search"
+        name="meals"
         options={{
-          title: "Search",
+          title: "Meals",
           headerShown: false,
-          tabBarIcon: ({ focused }) => (
-            <TabIcon focused={focused} icon={searchIcon} />
-          ),
+          tabBarIcon: ({ focused }) => <TabIcon focused={focused} />,
         }}
       />
       <Tabs.Screen
@@ -61,11 +60,13 @@ const _layout = () => {
       />
 
       <Tabs.Screen
-        name="meals"
+        name="search"
         options={{
-          title: "Meals",
+          title: "Search",
           headerShown: false,
-          tabBarIcon: ({ focused }) => <TabIcon focused={focused} />,
+          tabBarIcon: ({ focused }) => (
+            <TabIcon focused={focused} icon={searchIcon} />
+          ),
         }}
       />
     </Tabs>

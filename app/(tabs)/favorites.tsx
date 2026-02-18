@@ -1,5 +1,5 @@
 import { ImageBackground, Text, View } from "react-native";
-const background = require("../../assets/images/bgocean.png");
+const background = require("../../assets/images/oceanFade.png");
 
 const favorites = () => {
   return (

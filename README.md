@@ -47,6 +47,7 @@ Notes. meals.tsx-tabs
 A list of meals will appear here. Once clicked it will bring you to
 their details screen
 </Text>
+
 <Link href="../Meals/birriaTacos" className="text-xl font-bold">
 {" "}
 Birria Tacos
@@ -55,3 +56,8 @@ Birria Tacos
 {" "}
 Cilantro Lime Chicken
 </Link>
+
+- Meal Card
+  <FlatList
+  renderItem={({ item }) => <Text> {item} </Text>}
+  data={meal.ingredients} ></FlatList>

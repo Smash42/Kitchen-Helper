@@ -1,7 +1,7 @@
-import SearchBar from "@/app/components/SearchBar";
 import { Link, useRouter } from "expo-router";
 import { ImageBackground, Text, View } from "react-native";
 const background = require("../../assets/images/bgocean.png");
+const sharkIcon = require("../../assets/images/Shark-Chef-small.png");
 
 export default function Index() {
   const router = useRouter();
@@ -12,7 +12,7 @@ export default function Index() {
         style={{ flex: 1 }}
         resizeMode="cover"
       >
-        <Text className="text-5xl text-white text-center mt-20">
+        <Text className="text-5xl text-white text-center mt-20 font-bold">
           Kitchen Helper
         </Text>
 
@@ -23,21 +23,12 @@ export default function Index() {
           dinner life!{" "}
         </Text>
 
-        <Text> </Text>
+        <Text></Text>
 
-        <SearchBar
-          onPress={() => router.push("/search")}
-          placeholder="search for a dinner"
-        />
-
-        <Link href="/favorites" className="text-red-200 m-1 text-xl">
+        <Link href="/favorites" className="text-red-200 m-5 text-xl">
           {" "}
-          Your Favorites
+          Your Favorite Meals
         </Link>
-        <Text className="text-white m-1">
-          {" "}
-          Category selections for dinners: Meat, Meal, Cook Style.
-        </Text>
       </ImageBackground>
     </View>
   );

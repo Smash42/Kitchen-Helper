@@ -1,5 +1,6 @@
 export interface Meal {
   id: string;
+
   title: string;
   meatType: string;
   cookingStyle: string;
@@ -15,7 +16,7 @@ export const mealData: Meal[] = [
     meatType: "Beef",
     cookingStyle: "CrockPot",
     ingredients: [
-      "- Chuck Roast",
+      "- Chuck Roast ",
       "- Green Chile Peppers",
       "- 2 Cups of Beef Broth",
       "- 2 Yellow Onions",
@@ -29,7 +30,13 @@ export const mealData: Meal[] = [
     title: "Cilantro Lime Chicken",
     meatType: "Chicken",
     cookingStyle: "AirFry",
-    ingredients: ["Chicken Breast", "Panko", "Lime", "Honey", "Garlic"],
+    ingredients: [
+      "- Chicken Breast ",
+      "- Panko ",
+      "- Lime ",
+      "- Honey ",
+      "- Garlic ",
+    ],
     instructions:
       " Cutlet Chicken Breast with Panko, cook in Air Fryer for 18 mins at 375. Combine Avacado Oil, Garlic, Honey and Lime in small pan simmer for 5 mins. Dip chicken in the pan. Place in Ciabatta bread. ",
     isFavorite: false,
@@ -40,10 +47,10 @@ export const mealData: Meal[] = [
     meatType: "Seafood",
     cookingStyle: "Stove",
     ingredients: [
-      "- 1 lb. of Shrimp",
-      "- 2 Cups Mango Salsa",
-      "- Carb Balance Tortilla",
-      "- Cilantro",
+      "- 1 lb. of Shrimp ",
+      "- 2 Cups Mango Salsa ",
+      "- Carb Balance Tortilla ",
+      "- Cilantro ",
     ],
     instructions:
       "Saute Shrimp for 6-8 mins, flipping once. Place shrimp into Tortilla with Mango Salsa. Top with Cilantro as necessary ",
