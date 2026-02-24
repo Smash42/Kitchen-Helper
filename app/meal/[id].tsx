@@ -1,6 +1,8 @@
 import { Link, useLocalSearchParams } from "expo-router";
-import { ScrollView, Text, View } from "react-native";
+import { ImageBackground, ScrollView, View } from "react-native";
+import MealCard from "../components/MealCard";
 import { mealData } from "../data/mealData";
+const background = require("../../assets/images/oceanFade.png");
 
 const details = () => {
   const { id } = useLocalSearchParams();
@@ -8,36 +10,40 @@ const details = () => {
   const meal = mealData.find((m) => m.id === id);
 
   if (!meal) {
-    return <Text> Meal not found</Text>;
+    return (
+      <Link
+        href={"/(tabs)/meals"}
+        className="text-xl font-bold mt-10 text-blue-600"
+      >
+        Back to Meals
+      </Link>
+    );
   }
 
   return (
-    <ScrollView className="bg-teal-200">
-      <View>
-        <Text className="flex-1 mt-20 text-4xl font-bold text-center">
-          {meal.title}
-        </Text>
-        <Text className="flex-1 mt-5 text-xl text-center">
-          Buttons: Add to Favorites
-        </Text>
-        <Text className="flex-1 mt-10 text-2xl font-bold text-center">
-          {" "}
-          Ingredients
-        </Text>
-        <Text className="p-2"> {meal.ingredients}</Text>
-        <Text className="flex-1 mt-10 text-2xl font-bold text-center">
-          Instructions:
-        </Text>
-        <Text className="p-2"> {meal.instructions}</Text>
-        <Link
-          href={"/(tabs)/meals"}
-          className="text-xl font-bold mt-10 text-blue-600"
-        >
-          {" "}
-          Back to Meals
-        </Link>
-      </View>
-    </ScrollView>
+    <ImageBackground source={background} style={{ flex: 1 }} resizeMode="cover">
+      <ScrollView>
+        <View>
+          <MealCard
+            meal={meal}
+            onPress={function (): void {
+              throw new Error("Function not implemented.");
+            }}
+            onToggleFavorite={function (): void {
+              throw new Error("Function not implemented.");
+            }}
+          ></MealCard>
+
+          <Link
+            href={"/(tabs)/meals"}
+            className="text-xl font-bold mt-10 text-link"
+          >
+            {" "}
+            Back to Meals
+          </Link>
+        </View>
+      </ScrollView>
+    </ImageBackground>
   );
 };
 

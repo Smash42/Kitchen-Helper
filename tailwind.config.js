@@ -7,9 +7,12 @@ module.exports = {
   presets: [require("nativewind/preset")],
   theme: {
     extend: {
-      color: {
-        primary: "#ffffff",
-        secondary: "#203731",
+      colors: {
+        title: "#d1ffbb",
+        meals: "#f9ffaa",
+        subtitle: "#80f0ff",
+        link: "#89aeff",
+        extra: "#203731",
       },
     },
   },

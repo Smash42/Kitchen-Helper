@@ -5,6 +5,7 @@ const homeIcon = require("../../assets/icons/home.png");
 const highlightIcon = require("../../assets/images/highlight.png");
 const searchIcon = require("../../assets/icons/search.png");
 const heartIcon = require("../../assets/icons/heartOutline.png");
+const mealIcon = require("../../assets/icons/meal.png");
 
 const TabIcon = ({ focused, icon, title }: any) => {
   if (focused) {
@@ -45,7 +46,9 @@ const _layout = () => {
         options={{
           title: "Meals",
           headerShown: false,
-          tabBarIcon: ({ focused }) => <TabIcon focused={focused} />,
+          tabBarIcon: ({ focused }) => (
+            <TabIcon focused={focused} icon={mealIcon} />
+          ),
         }}
       />
       <Tabs.Screen
