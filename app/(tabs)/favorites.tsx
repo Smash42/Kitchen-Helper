@@ -18,10 +18,18 @@ const favorites = () => {
         </Text>
         <View>
           {Favorites.map((meal) => (
-            <Link key={meal.id} href={`/meal/${meal.id}`} className="mt-5">
+            <Link
+              key={meal.id}
+              href={`/meal/${meal.id}`}
+              className="mt-5"
+              asChild
+            >
               <TouchableOpacity>
-                <Text> {meal.title}</Text>
-                <Text>
+                <Text className="text-3xl mt-5 text-center text-white">
+                  {" "}
+                  {meal.title}
+                </Text>
+                <Text className="text-yellow-100 text-lg text-center">
                   {meal.meatType} - {meal.cookingStyle}
                 </Text>
               </TouchableOpacity>

@@ -1,7 +1,6 @@
 import React from "react";
 import { Image, ScrollView, Text, TouchableOpacity, View } from "react-native";
 import { Meal } from "../data/mealData";
-const background = require("../../assets/images/oceanFade.png");
 const heart = require("../../assets/icons/heart.png");
 const heartOutline = require("../../assets/icons/heartOutline.png");
 
@@ -19,15 +18,15 @@ const MealCard: React.FC<MealCardProps> = ({
   isFavorite,
 }) => {
   return (
-    <ScrollView>
-      <View>
-        {/*Favorite */}
-        <TouchableOpacity
-          onPress={onToggleFavorite}
-          className="absolute right-6 top-20"
-        >
-          <Image source={isFavorite ? heart : heartOutline} />
-        </TouchableOpacity>
+    <View className="relative flex-1">
+      {/*Favorite */}
+      <TouchableOpacity
+        onPress={onToggleFavorite}
+        className="absolute top-8 right-6 z-50 bg-red-500 p-1"
+      >
+        <Image source={isFavorite ? heart : heartOutline} />
+      </TouchableOpacity>
+      <ScrollView>
         <Text className="text-center text-5xl mt-20 text-title ">
           {" "}
           Kitchen Helper
@@ -44,7 +43,7 @@ const MealCard: React.FC<MealCardProps> = ({
           {" "}
           Ingredients:
         </Text>
-        <Text className="text-black text-xl p-2 text-white">
+        <Text className="text-black text-xl p-2 text-white ">
           {meal.ingredients.map((item, index) => (
             <Text key={index}>- {item} </Text>
           ))}
@@ -58,8 +57,8 @@ const MealCard: React.FC<MealCardProps> = ({
           {" "}
           {meal.instructions}
         </Text>
-      </View>
-    </ScrollView>
+      </ScrollView>
+    </View>
   );
 };
 

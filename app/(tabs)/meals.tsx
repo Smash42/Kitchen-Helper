@@ -31,7 +31,7 @@ const Meals = () => {
             Select a meal from below to see the respective ingredients and
             instructions
           </Text>
-          {/* Search Bar */}
+          {/* Search Bar or move to search page?*/}
           <TextInput
             placeholder="Search meals..."
             value={search}

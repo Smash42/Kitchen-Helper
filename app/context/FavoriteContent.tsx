@@ -1,20 +1,24 @@
-import { createContext, useState } from "react";
+import { createContext, ReactNode, useState } from "react";
 import { Meal } from "../data/mealData";
 
 interface FavoriteContentProps {
   Favorites: Meal[];
-  toggleFavorite: (meal: Meal) => void;
+  onToggleFavorite: (meal: Meal) => void;
 }
 
 export const FavoriteContent = createContext<FavoriteContentProps>({
   Favorites: [],
-  toggleFavorite: () => {},
+  onToggleFavorite: () => {},
 });
 
-export const FavoritesProvider = () => {
+interface FavoritesProviderProps {
+  children: ReactNode;
+}
+
+export const FavoritesProvider = ({ children }: FavoritesProviderProps) => {
   const [Favorites, setFavorites] = useState<Meal[]>([]);
 
-  const toggleFavorite = (meal: Meal) => {
+  const onToggleFavorite = (meal: Meal) => {
     setFavorites((prev) => {
       const exists = prev.find((m) => m.id === meal.id);
 
@@ -27,8 +31,8 @@ export const FavoritesProvider = () => {
   };
 
   return (
-    <FavoriteContent.Provider
-      value={{ Favorites, toggleFavorite }}
-    ></FavoriteContent.Provider>
+    <FavoriteContent.Provider value={{ Favorites, onToggleFavorite }}>
+      {children}
+    </FavoriteContent.Provider>
   );
 };
