@@ -1,7 +1,12 @@
-import { ImageBackground, Text, View } from "react-native";
-const background = require("../../assets/images/oceanFade.png");
+import { Link } from "expo-router";
+import { useContext } from "react";
+import { ImageBackground, Text, TouchableOpacity, View } from "react-native";
+import { FavoriteContent } from "../context/FavoriteContent";
+const background = require("../../assets/images/bgocean.png");
 
 const favorites = () => {
+  const { Favorites } = useContext(FavoriteContent);
+
   return (
     <ImageBackground source={background} style={{ flex: 1 }} resizeMode="cover">
       <View className="flex-1 items-center">
@@ -11,6 +16,18 @@ const favorites = () => {
         <Text className="text-red-200 text-3xl text-center mt-5">
           Your Favorited Meals:
         </Text>
+        <View>
+          {Favorites.map((meal) => (
+            <Link key={meal.id} href={`/meal/${meal.id}`} className="mt-5">
+              <TouchableOpacity>
+                <Text> {meal.title}</Text>
+                <Text>
+                  {meal.meatType} - {meal.cookingStyle}
+                </Text>
+              </TouchableOpacity>
+            </Link>
+          ))}
+        </View>
       </View>
     </ImageBackground>
   );

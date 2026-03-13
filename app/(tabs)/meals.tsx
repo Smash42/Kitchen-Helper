@@ -1,10 +1,22 @@
 import { Link } from "expo-router";
-import React from "react";
-import { ImageBackground, ScrollView, Text, View } from "react-native";
+import React, { useState } from "react";
+import {
+  ImageBackground,
+  ScrollView,
+  Text,
+  TextInput,
+  View,
+} from "react-native";
 import { mealData } from "../data/mealData";
 const background = require("../../assets/images/bgocean.png");
 
 const Meals = () => {
+  const [search, setSearch] = useState("");
+
+  const filteredMeals = mealData.filter((meal) =>
+    meal.title.toLowerCase().includes(search.toLowerCase()),
+  );
+
   return (
     <ImageBackground source={background} style={{ flex: 1 }} resizeMode="cover">
       <ScrollView>
@@ -19,9 +31,18 @@ const Meals = () => {
             Select a meal from below to see the respective ingredients and
             instructions
           </Text>
+          {/* Search Bar */}
+          <TextInput
+            placeholder="Search meals..."
+            value={search}
+            onChangeText={setSearch}
+            className="bg-yellow-100 p-3 text-lg"
+          />
         </View>
+
+        {/* Meal List */}
         <View className="p-2 flex-2">
-          {mealData.map((meal) => (
+          {filteredMeals.map((meal) => (
             <Link key={meal.id} href={`/meal/${meal.id}`} className="mt-5">
               <Text className="text-2xl text-meals p-2">{meal.title}: </Text>
               <Text className="text-yellow-100 text-lg">

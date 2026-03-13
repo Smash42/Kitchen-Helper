@@ -1,6 +1,6 @@
 import { Image, ImageBackground, Text, View } from "react-native";
 const sharkchef = require("../../assets/images/Shark-Chef-small.png");
-const background = require("../../assets/images/oceanFade.png");
+const background = require("../../assets/images/bgocean.png");
 
 const search = () => {
   return (
