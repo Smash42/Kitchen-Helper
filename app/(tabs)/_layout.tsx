@@ -1,42 +1,58 @@
 import { Tabs } from "expo-router";
-import { Image, ImageBackground, Text, View } from "react-native";
+import { Image, ImageBackground, View } from "react-native";
 // Import your images directly as variables
 const homeIcon = require("../../assets/icons/home.png");
 const highlightIcon = require("../../assets/images/highlight.png");
-const searchIcon = require("../../assets/icons/search.png");
-const heartIcon = require("../../assets/icons/heartOutline.png");
+const drinkIcon = require("../../assets/icons/drink.png");
+const heartIcon = require("../../assets/icons/heart.png");
+const heart = require("../../assets/icons/heart.png");
 const mealIcon = require("../../assets/icons/meal.png");
 
 const TabIcon = ({ focused, icon, title }: any) => {
   if (focused) {
     return (
-      <ImageBackground
-        source={highlightIcon}
-        style={{ flexDirection: "row", width: 100 }}
-        className="absolute w-full h-full rounded"
-        resizeMode="contain"
-      >
-        <Text> {title} </Text>
-      </ImageBackground>
+      <View className="w-10 h-5 items-center justify-center">
+        <ImageBackground
+          source={highlightIcon}
+          className="w-16 h-10 items-center justify-center"
+          resizeMode="contain"
+        >
+          <Image
+            source={icon}
+            className="w-8 h-8 items-center justify-center ml-5"
+          />
+        </ImageBackground>
+      </View>
     );
   }
   return (
-    <View>
-      <Image source={icon} />
+    <View className="items-center justify-center">
+      <Image
+        source={icon}
+        className="w-6 h-6 opacity-70 items-center justify-center"
+      />
     </View>
   );
 };
 
 const _layout = () => {
   return (
-    <Tabs>
+    <Tabs
+      screenOptions={{
+        tabBarActiveTintColor: "white",
+      }}
+    >
       <Tabs.Screen
         name="index"
         options={{
           title: "Home",
           headerShown: false,
           tabBarIcon: ({ focused }) => (
-            <TabIcon focused={focused} icon={homeIcon} />
+            <TabIcon
+              className="items-center justify-center"
+              focused={focused}
+              icon={homeIcon}
+            />
           ),
         }}
       />
@@ -63,12 +79,12 @@ const _layout = () => {
       />
 
       <Tabs.Screen
-        name="search"
+        name="drinks"
         options={{
-          title: "Search",
+          title: "Drinks",
           headerShown: false,
           tabBarIcon: ({ focused }) => (
-            <TabIcon focused={focused} icon={searchIcon} />
+            <TabIcon focused={focused} icon={drinkIcon} />
           ),
         }}
       />

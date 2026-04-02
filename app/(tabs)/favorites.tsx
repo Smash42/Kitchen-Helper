@@ -1,11 +1,11 @@
 import { Link } from "expo-router";
 import { useContext } from "react";
 import { ImageBackground, Text, TouchableOpacity, View } from "react-native";
-import { FavoriteContent } from "../context/FavoriteContent";
+import { FavoriteContent } from "../../context/FavoriteContent";
 const background = require("../../assets/images/bgocean.png");
 
 const favorites = () => {
-  const { Favorites } = useContext(FavoriteContent);
+  const { Favorites } = useContext(FavoriteContent) as { Favorites: any[] };
 
   return (
     <ImageBackground source={background} style={{ flex: 1 }} resizeMode="cover">

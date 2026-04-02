@@ -1,9 +1,9 @@
 import { Link, useLocalSearchParams } from "expo-router";
 import { useContext } from "react";
 import { ImageBackground, View } from "react-native";
+import { FavoriteContent } from "../../context/FavoriteContent";
+import { mealData } from "../../data/mealData";
 import MealCard from "../components/MealCard";
-import { FavoriteContent } from "../context/FavoriteContent";
-import { mealData } from "../data/mealData";
 const background = require("../../assets/images/bgocean.png");
 
 const details = () => {
@@ -38,16 +38,14 @@ const details = () => {
 
         <Link
           href={"/(tabs)/meals"}
-          className="text-xl font-bold mt-10 text-link"
+          className="text-xl font-bold mt-7 text-link text-center"
         >
-          {" "}
           Back to Meals
         </Link>
         <Link
           href={"/(tabs)/favorites"}
-          className="text-xl font-bold mt-10 text-link "
+          className="text-xl font-bold m-3 text-link text-center "
         >
-          {" "}
           Favorited Meals
         </Link>
       </View>

@@ -1,6 +1,6 @@
 import React from "react";
 import { Image, ScrollView, Text, TouchableOpacity, View } from "react-native";
-import { Meal } from "../data/mealData";
+import { Meal } from "../../data/mealData";
 const heart = require("../../assets/icons/heart.png");
 const heartOutline = require("../../assets/icons/heartOutline.png");
 
@@ -31,6 +31,7 @@ const MealCard: React.FC<MealCardProps> = ({
           {" "}
           Kitchen Helper
         </Text>
+        {meal.image && <Image source={{ uri: meal.image }} />}
         <Text className="text-center text-3xl mt-5 font-bold text-meals ">
           {meal.title}
         </Text>
@@ -44,9 +45,15 @@ const MealCard: React.FC<MealCardProps> = ({
           Ingredients:
         </Text>
         <Text className="text-black text-xl p-2 text-white ">
-          {meal.ingredients.map((item, index) => (
-            <Text key={index}>- {item} </Text>
-          ))}
+          {meal.ingredients?.length > 0 ? (
+            meal.ingredients.map((item, index) => (
+              <Text key={index}>- {item} </Text>
+            ))
+          ) : (
+            <Text className="text-center text-white">
+              Ingredients not available
+            </Text>
+          )}
         </Text>
 
         <Text className="text-black text-2xl text-center mt-5 font-semibold text-subtitle">

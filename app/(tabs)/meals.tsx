@@ -7,7 +7,7 @@ import {
   TextInput,
   View,
 } from "react-native";
-import { mealData } from "../data/mealData";
+import { mealData } from "../../data/mealData";
 const background = require("../../assets/images/bgocean.png");
 
 const Meals = () => {
@@ -26,17 +26,16 @@ const Meals = () => {
             Kitchen Helper
           </Text>
           <Text className="text-3xl mt-5 text-subtitle text-center">Meals</Text>
-          <Text className="text-2xl mt-5 text-white p-2">
+          <Text className="text-2xl mt-5 text-white p-2 text-center">
             {" "}
             Select a meal from below to see the respective ingredients and
             instructions
           </Text>
-          {/* Search Bar or move to search page?*/}
           <TextInput
             placeholder="Search meals..."
             value={search}
             onChangeText={setSearch}
-            className="bg-yellow-100 p-3 text-lg"
+            className="bg-yellow-100 p-3 text-lg width-80 self-center"
           />
         </View>
 
