@@ -11,15 +11,15 @@ const mealIcon = require("../../assets/icons/meal.png");
 const TabIcon = ({ focused, icon, title }: any) => {
   if (focused) {
     return (
-      <View className="w-10 h-5 items-center justify-center">
+      <View className="w-20 h-20 items-center justify-center">
         <ImageBackground
           source={highlightIcon}
-          className="w-16 h-10 items-center justify-center"
+          className="w-16 h-20 items-center justify-center"
           resizeMode="contain"
         >
           <Image
             source={icon}
-            className="w-8 h-8 items-center justify-center ml-5"
+            className="w-8 h-8 items-center justify-center"
           />
         </ImageBackground>
       </View>
@@ -29,7 +29,7 @@ const TabIcon = ({ focused, icon, title }: any) => {
     <View className="items-center justify-center">
       <Image
         source={icon}
-        className="w-6 h-6 opacity-70 items-center justify-center"
+        className="w-8 h-8 opacity-70 items-center justify-center"
       />
     </View>
   );
@@ -39,7 +39,7 @@ const _layout = () => {
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: "white",
+        tabBarActiveTintColor: "black",
       }}
     >
       <Tabs.Screen

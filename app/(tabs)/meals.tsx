@@ -35,7 +35,7 @@ const Meals = () => {
             placeholder="Search meals..."
             value={search}
             onChangeText={setSearch}
-            className="bg-yellow-100 p-3 text-lg width-80 self-center"
+            className="bg-emerald-700 p-3 text-lg width-80 self-center text-black"
           />
         </View>
 

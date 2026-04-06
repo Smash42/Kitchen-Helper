@@ -39,7 +39,7 @@ export default function Drinks() {
           placeholder="Search Drinks..."
           value={query}
           onChangeText={setQuery}
-          className="bg-yellow-100 p-3 text-lg items-center justify-center width-80 self-center mb-5"
+          className="bg-emerald-700 p-3 text-lg text-black items-center justify-center width-80 self-center mb-5"
         />
         {loading && <Text className="text-white mt-5">Loading...</Text>}
         {error && <Text className="text-red-500 mt-5">{error.message}</Text>}
@@ -60,7 +60,7 @@ export default function Drinks() {
               }
             >
               <View className="text-center">
-                <Text className="text-xl text-center font-medium text-white">
+                <Text className="text-xl text-center font-medium text-yellow-100">
                   {" "}
                   {item?.strDrink ? `${item.strDrink}` : ""}
                   {item?.strCategory ? `- ${item.strCategory}` : ""}
