@@ -22,7 +22,7 @@ const MealCard: React.FC<MealCardProps> = ({
       {/*Favorite */}
       <TouchableOpacity
         onPress={onToggleFavorite}
-        className="absolute top-8 right-6 z-50 bg-red-500 p-1"
+        className="absolute top-8 right-5 z-50 bg-red-500 p-1 mt-5"
       >
         <Image source={isFavorite ? heart : heartOutline} />
       </TouchableOpacity>
