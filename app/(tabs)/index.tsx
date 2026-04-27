@@ -23,19 +23,25 @@ export default function Index() {
           meals every week, and instead use Kitchen Helper to help spice up your
           dinner life!{" "}
         </Text>
-        <Image source={sharkIcon} className="mx-auto"></Image>
+        <Image source={sharkIcon} className="mx-auto rounded-lg"></Image>
 
         <Text></Text>
 
         <Text className="text-xl text-white m-5">
           {" "}
-          Use the Tabs below to view available meals, your favorites, or search
+          Use the Tabs below to view available meals, drinks or your favorites
         </Text>
 
-        <Link href="/favorites" className="text-link mt-3 text-xl text-center">
+        <Link
+          href="/favorites"
+          className="text-link mt-3 text-xl text-center font-semibold "
+        >
           Your Favorite Meals
         </Link>
-        <Link href="/meals" className="text-link m-3 text-xl text-center">
+        <Link
+          href="/meals"
+          className="text-link m-3 text-xl text-center font-semibold "
+        >
           Meal Options
         </Link>
       </ImageBackground>

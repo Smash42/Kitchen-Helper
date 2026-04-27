@@ -32,7 +32,6 @@ const MealCard: React.FC<MealCardProps> = ({
               Haptics.NotificationFeedbackType.Success,
             );
           }
-
           onToggleFavorite();
         }}
         className="absolute top-8 right-5 z-50 bg-red-500 p-1 mt-5"
@@ -53,11 +52,11 @@ const MealCard: React.FC<MealCardProps> = ({
           {" "}
           {meal.meatType} - {meal.cookingStyle}{" "}
         </Text>
-        <Text className="text-black text-2xl text-center mt-5 font-semibold text-subtitle">
+        <Text className=" text-2xl text-center mt-5 font-semibold text-subtitle">
           {" "}
           Ingredients:
         </Text>
-        <Text className="text-black text-xl p-2 text-white ">
+        <Text className=" text-xl p-2 text-white ">
           {meal.ingredients?.length > 0 ? (
             meal.ingredients.map((item, index) => (
               <Text key={index}>- {item} </Text>
@@ -69,14 +68,11 @@ const MealCard: React.FC<MealCardProps> = ({
           )}
         </Text>
 
-        <Text className="text-black text-2xl text-center mt-5 font-semibold text-subtitle">
+        <Text className="text-2xl text-center mt-5 font-semibold text-subtitle">
           {" "}
           Instructions
         </Text>
-        <Text className="text-black text-xl p-2 text-white">
-          {" "}
-          {meal.instructions}
-        </Text>
+        <Text className="text-xl p-2 text-white"> {meal.instructions}</Text>
       </ScrollView>
     </View>
   );

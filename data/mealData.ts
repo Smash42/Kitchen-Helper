@@ -1,6 +1,5 @@
 export interface Meal {
   id: number;
-
   title: string;
   meatType: string;
   cookingStyle: string;

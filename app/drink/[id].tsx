@@ -21,7 +21,7 @@ const details = () => {
 
   const getIngredients = (drink: any) => {
     const ingredients = [];
-    for (let i = 1; i <= 15; i++) {
+    for (let i = 1; i <= 18; i++) {
       const ingredient = drink[`strIngredient${i}`];
       const measure = drink[`strMeasure${i}`];
       if (ingredient && ingredient.trim() !== "") {
@@ -47,7 +47,7 @@ const details = () => {
         </Text>
         <Image
           source={{ uri: drink.strDrinkThumb }}
-          className="w-80 h-80 self-center mt-5 rounded-lg"
+          className="w-40 h-40 self-center mt-5 rounded-lg"
         />
         <ScrollView className="rounded-lg p-4">
           <Text className="text-black text-2xl text-center mt-5 font-semibold text-subtitle">
