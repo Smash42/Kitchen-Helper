@@ -34,7 +34,7 @@ const MealCard: React.FC<MealCardProps> = ({
           }
           onToggleFavorite();
         }}
-        className="absolute top-8 right-5 z-50 bg-red-500 p-1 mt-5"
+        className="absolute top-8 right-5 z-50 bg-red-300 p-1 mt-5 shadow-lg p-2 rounded-full"
       >
         <Image source={isFavorite ? heart : heartOutline} />
       </TouchableOpacity>
@@ -54,20 +54,21 @@ const MealCard: React.FC<MealCardProps> = ({
         </Text>
         <Text className=" text-2xl text-center mt-5 font-semibold text-subtitle">
           {" "}
-          Ingredients:
+          Ingredients
         </Text>
-        <Text className=" text-xl p-2 text-white ">
+        <View className="mt-4 px-4">
           {meal.ingredients?.length > 0 ? (
             meal.ingredients.map((item, index) => (
-              <Text key={index}>- {item} </Text>
+              <Text key={index} className="text-white text-lg mb-1">
+                • {item}
+              </Text>
             ))
           ) : (
             <Text className="text-center text-white">
               Ingredients not available
             </Text>
           )}
-        </Text>
-
+        </View>
         <Text className="text-2xl text-center mt-5 font-semibold text-subtitle">
           {" "}
           Instructions

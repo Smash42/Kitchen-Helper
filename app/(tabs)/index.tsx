@@ -23,7 +23,10 @@ export default function Index() {
           meals every week, and instead use Kitchen Helper to help spice up your
           dinner life!{" "}
         </Text>
-        <Image source={sharkIcon} className="mx-auto rounded-lg"></Image>
+        <Image
+          source={sharkIcon}
+          className="mx-auto rounded-lg shadow-lg"
+        ></Image>
 
         <Text></Text>
 

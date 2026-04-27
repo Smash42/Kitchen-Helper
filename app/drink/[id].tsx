@@ -47,7 +47,7 @@ const details = () => {
         </Text>
         <Image
           source={{ uri: drink.strDrinkThumb }}
-          className="w-40 h-40 self-center mt-5 rounded-lg"
+          className="w-40 h-40 self-center mt-5 rounded-lg shadow-lg"
         />
         <ScrollView className="rounded-lg p-4">
           <Text className="text-black text-2xl text-center mt-5 font-semibold text-subtitle">

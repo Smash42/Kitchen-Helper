@@ -21,7 +21,7 @@ const Meals = () => {
     <ImageBackground source={background} style={{ flex: 1 }} resizeMode="cover">
       <ScrollView>
         <View className="flex-1">
-          <Text className="text-5xl mt-20 text-title text-center">
+          <Text className="text-5xl mt-20 text-title text-center ">
             {" "}
             Kitchen Helper
           </Text>
@@ -42,8 +42,8 @@ const Meals = () => {
         {/* Meal List */}
         <View className="p-2 flex-2">
           {filteredMeals.map((meal) => (
-            <Link key={meal.id} href={`/meal/${meal.id}`} className="mt-5">
-              <Text className="text-2xl text-meals p-2">{meal.title}: </Text>
+            <Link key={meal.id} href={`/meal/${meal.id}`} className="mt-5 ">
+              <Text className="text-2xl text-meals p-2 ">{meal.title}: </Text>
               <Text className="text-yellow-100 text-lg">
                 {meal.meatType} - {meal.cookingStyle}
               </Text>

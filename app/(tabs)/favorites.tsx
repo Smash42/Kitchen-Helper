@@ -17,24 +17,31 @@ const favorites = () => {
           Your Favorited Meals:
         </Text>
         <View>
-          {Favorites.map((meal) => (
-            <Link
-              key={meal.id}
-              href={`/meal/${meal.id}`}
-              className="mt-5"
-              asChild
-            >
-              <TouchableOpacity>
-                <Text className="text-3xl mt-5 text-center text-white">
-                  {" "}
-                  {meal.title}
-                </Text>
-                <Text className="text-yellow-100 text-lg text-center">
-                  {meal.meatType} - {meal.cookingStyle}
-                </Text>
-              </TouchableOpacity>
-            </Link>
-          ))}
+          {Favorites.length === 0 ? (
+            <Text className="text-white text-2xl mt-5 text-center">
+              You haven't favorited any meals yet! Go to the Meals tab to find
+              some.
+            </Text>
+          ) : (
+            Favorites.map((meal) => (
+              <Link
+                key={meal.id}
+                href={`/meal/${meal.id}`}
+                className="mt-5"
+                asChild
+              >
+                <TouchableOpacity>
+                  <Text className="text-3xl mt-5 text-center text-white">
+                    {" "}
+                    {meal.title}
+                  </Text>
+                  <Text className="text-yellow-100 text-lg text-center">
+                    {meal.meatType} - {meal.cookingStyle}
+                  </Text>
+                </TouchableOpacity>
+              </Link>
+            ))
+          )}
         </View>
       </View>
     </ImageBackground>
