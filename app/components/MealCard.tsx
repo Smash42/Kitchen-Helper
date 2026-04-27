@@ -1,3 +1,4 @@
+import * as Haptics from "expo-haptics";
 import React from "react";
 import { Image, ScrollView, Text, TouchableOpacity, View } from "react-native";
 import { Meal } from "../../data/mealData";
@@ -21,7 +22,19 @@ const MealCard: React.FC<MealCardProps> = ({
     <View className="relative flex-1">
       {/*Favorite */}
       <TouchableOpacity
-        onPress={onToggleFavorite}
+        onPress={async () => {
+          if (isFavorite) {
+            await Haptics.notificationAsync(
+              Haptics.NotificationFeedbackType.Warning,
+            );
+          } else {
+            await Haptics.notificationAsync(
+              Haptics.NotificationFeedbackType.Success,
+            );
+          }
+
+          onToggleFavorite();
+        }}
         className="absolute top-8 right-5 z-50 bg-red-500 p-1 mt-5"
       >
         <Image source={isFavorite ? heart : heartOutline} />
