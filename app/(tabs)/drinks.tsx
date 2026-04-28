@@ -4,6 +4,7 @@ import { useRouter } from "expo-router";
 import { useState } from "react";
 import {
   FlatList,
+  Image,
   ImageBackground,
   Pressable,
   Text,
@@ -46,27 +47,33 @@ export default function Drinks() {
         {!loading && drinks?.length === 0 && (
           <Text className="text-white mt-5">No drinks found 🍹</Text>
         )}
-
         <FlatList
           data={drinks}
           keyExtractor={(item) => item.idDrink}
+          numColumns={2}
+          contentContainerStyle={{ paddingBottom: 100 }}
+          columnWrapperStyle={{ justifyContent: "space-between" }}
           renderItem={({ item }) => (
             <Pressable
               onPress={() =>
                 router.push({
-                  pathname: `/drink/[id]`,
+                  pathname: "/drink/[id]",
                   params: { id: item.idDrink },
                 })
               }
+              className="bg-white/10 m-2 p-3 rounded-xl flex-1"
             >
-              <View className="text-center">
-                <Text className="text-xl text-center font-medium text-yellow-100">
-                  {" "}
-                  {item?.strDrink ? `${item.strDrink}` : ""}
-                  {item?.strCategory ? `- ${item.strCategory}` : ""}
-                </Text>
-                <Text> {} </Text>
-              </View>
+              <Image
+                source={{ uri: item.strDrinkThumb }}
+                className="w-full h-32 self-center mb-2 rounded-lg shadow-lg"
+              />
+
+              <Text className="text-white font-bold text-lg text-center">
+                {item?.strDrink ? `${item.strDrink}` : ""}
+              </Text>
+              <Text className="text-yellow-200 text-sm text-center">
+                {item.strCategory} • {item.strAlcoholic}
+              </Text>
             </Pressable>
           )}
         />

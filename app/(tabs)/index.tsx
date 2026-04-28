@@ -30,11 +30,6 @@ export default function Index() {
 
         <Text></Text>
 
-        <Text className="text-xl text-white m-5">
-          {" "}
-          Use the Tabs below to view available meals, drinks or your favorites
-        </Text>
-
         <Link
           href="/favorites"
           className="text-link mt-3 text-xl text-center font-semibold "

@@ -1,7 +1,7 @@
+import { Meal } from "@/data/mealMapper";
 import * as Haptics from "expo-haptics";
 import React from "react";
 import { Image, ScrollView, Text, TouchableOpacity, View } from "react-native";
-import { Meal } from "../../data/mealData";
 const heart = require("../../assets/icons/heart.png");
 const heartOutline = require("../../assets/icons/heartOutline.png");
 
@@ -38,20 +38,22 @@ const MealCard: React.FC<MealCardProps> = ({
       >
         <Image source={isFavorite ? heart : heartOutline} />
       </TouchableOpacity>
-      <ScrollView>
-        <Text className="text-center text-5xl mt-20 text-title ">
-          {" "}
-          Kitchen Helper
-        </Text>
-        {meal.image && <Image source={{ uri: meal.image }} />}
-        <Text className="text-center text-3xl mt-5 font-bold text-meals ">
-          {meal.title}
-        </Text>
+      {meal.image && <Image source={{ uri: meal.image }} />}
+      <Text className="text-center text-3xl mt-20 font-bold text-meals ">
+        {meal.title}
+      </Text>
 
-        <Text className="text-center text-black text-xl text-yellow-100">
-          {" "}
-          {meal.meatType} - {meal.cookingStyle}{" "}
-        </Text>
+      <Text className="text-center text-black text-xl text-yellow-100">
+        {" "}
+        {meal.meatType} • {meal.cookingStyle}{" "}
+      </Text>
+      {meal.image && (
+        <Image
+          source={{ uri: meal.image }}
+          className="w-60 h-40 rounded-lg mb-2 items-center justify-center self-center mt-5 shadow-lg"
+        />
+      )}
+      <ScrollView className="mt-5">
         <Text className=" text-2xl text-center mt-5 font-semibold text-subtitle">
           {" "}
           Ingredients
@@ -73,7 +75,9 @@ const MealCard: React.FC<MealCardProps> = ({
           {" "}
           Instructions
         </Text>
-        <Text className="text-xl p-2 text-white"> {meal.instructions}</Text>
+        <Text className="mt-4 px-4 text-white text-lg">
+          {meal.instructions || "Instructions not available"}
+        </Text>
       </ScrollView>
     </View>
   );

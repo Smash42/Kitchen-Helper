@@ -1,8 +1,10 @@
+import { mapMealToMeal } from "@/data/mealMapper";
+import { fetchMealById } from "@/services/api";
+import useFetch from "@/services/useFetch";
 import { Link, useLocalSearchParams } from "expo-router";
 import { useContext } from "react";
 import { ImageBackground, View } from "react-native";
 import { FavoriteContent } from "../../context/FavoriteContent";
-import { mealData } from "../../data/mealData";
 import MealCard from "../components/MealCard";
 const background = require("../../assets/images/bgocean.png");
 
@@ -12,10 +14,14 @@ const details = () => {
   const { Favorites, onToggleFavorite } = useContext(FavoriteContent);
   const mealId = Number(Array.isArray(id) ? id[0] : id);
   const isFavorite = Favorites.some((m) => m.id === mealId);
+  const { data, loading, error } = useFetch(() => fetchMealById(id as string));
 
-  const meal = mealData.find((m) => m.id === mealId);
+  if (!data) return null;
 
-  if (!meal) {
+  // ✅ Convert API → your model
+  const mappedMeal = mapMealToMeal(data);
+
+  if (!mappedMeal) {
     return (
       <Link
         href={"/(tabs)/meals"}
@@ -30,9 +36,9 @@ const details = () => {
     <ImageBackground source={background} className="flex-1" resizeMode="cover">
       <View className="flex-1">
         <MealCard
-          meal={meal}
+          meal={mappedMeal}
           onPress={() => {}}
-          onToggleFavorite={() => onToggleFavorite(meal)}
+          onToggleFavorite={() => onToggleFavorite(mappedMeal)}
           isFavorite={isFavorite}
         ></MealCard>
 

@@ -38,12 +38,12 @@ const details = () => {
   return (
     <ImageBackground source={background} className="flex-1" resizeMode="cover">
       <View className="flex-1">
-        <Text className="text-5xl mt-20 text-title text-center">
-          {" "}
-          Kitchen Helper
+        <Text className="text-3xl mt-20 text-subtitle text-center">
+          Drink: {drink.strDrink}
         </Text>
-        <Text className="text-3xl mt-5 text-subtitle text-center">
-          {drink.strDrink}
+        <Text className="text-center text-black text-xl text-yellow-100">
+          {" "}
+          {drink.strCategory} • {drink.strAlcoholic}{" "}
         </Text>
         <Image
           source={{ uri: drink.strDrinkThumb }}
