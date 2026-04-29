@@ -96,9 +96,9 @@ const details = () => {
             await Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
             router.push("/(tabs)/drinks");
           }}
-          className="bg-emerald-600 p-2 rounded-xl m-3 w-1/3 self-center"
+          className="bg-emerald-600 p-2 rounded-xl m-3 w-1/3 self-center shadow-xl"
         >
-          <Text className="text-white text-lg text-center font-bold">
+          <Text className="text-white text-lg text-center font-semibold">
             Drinks🍹
           </Text>
         </TouchableOpacity>
