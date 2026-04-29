@@ -10,7 +10,7 @@ module.exports = {
       colors: {
         title: "#d1ffbb",
         meals: "#f9ffaa",
-        subtitle: "#80f0ff",
+        subtitle: "#61d8ba",
         link: "#89aeff",
         extra: "#203731",
       },

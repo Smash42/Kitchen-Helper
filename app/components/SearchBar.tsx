@@ -10,7 +10,7 @@ interface Props {
 const SearchBar = ({ placeholder, value, onChangeText, onPress }: Props) => {
   return (
     <View>
-      <Text className="text-white font-bold text-center">SEARCH IMAGE</Text>
+      <Text className="text-white font-bold text-center">SEARCH </Text>
       <TextInput
         onPress={onPress}
         placeholder={placeholder}

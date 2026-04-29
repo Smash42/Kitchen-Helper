@@ -26,8 +26,7 @@ const favorites = () => {
         <View className="p-2 flex-2 justify-center">
           {Favorites.length === 0 ? (
             <Text className="text-white text-2xl mt-5 text-center">
-              You haven't favorited any meals yet! Go to the Meals tab to find
-              some.
+              You haven't favorited any meals yet!
             </Text>
           ) : (
             <FlatList

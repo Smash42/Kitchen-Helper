@@ -1,7 +1,16 @@
 import { fetchDrinkById } from "@/services/api";
 import useFetch from "@/services/useFetch";
-import { Link, useLocalSearchParams } from "expo-router";
-import { Image, ImageBackground, ScrollView, Text, View } from "react-native";
+import * as Haptics from "expo-haptics";
+import { router, useLocalSearchParams } from "expo-router";
+import {
+  ActivityIndicator,
+  Image,
+  ImageBackground,
+  ScrollView,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
 const background = require("../../assets/images/bgocean.png");
 
 const details = () => {
@@ -12,7 +21,7 @@ const details = () => {
     loading,
     error,
   } = useFetch(() => fetchDrinkById(Array.isArray(id) ? id[0] : id), [id]);
-  if (loading) return <Text className="text-white mt-5">Loading...</Text>;
+  if (loading) return <ActivityIndicator size="large" color="#ffffff" />;
   if (error)
     return (
       <Text className="text-red-500 text-white mt-5"> {error.message}</Text>
@@ -38,8 +47,8 @@ const details = () => {
   return (
     <ImageBackground source={background} className="flex-1" resizeMode="cover">
       <View className="flex-1">
-        <Text className="text-3xl mt-20 text-subtitle text-center">
-          Drink: {drink.strDrink}
+        <Text className="text-white text-3xl mt-20 text-subtitle text-center">
+          {drink.strDrink}
         </Text>
         <Text className="text-center text-black text-xl text-yellow-100">
           {" "}
@@ -47,16 +56,16 @@ const details = () => {
         </Text>
         <Image
           source={{ uri: drink.strDrinkThumb }}
-          className="w-40 h-40 self-center mt-5 rounded-lg shadow-lg"
+          className="w-40 h-40 self-center mt-5 rounded-lg shadow-2xl"
         />
-        <ScrollView className="rounded-lg p-4">
+        <ScrollView className="rounded-lg mt-5 shadow-2xl">
           <Text className="text-black text-2xl text-center mt-5 font-semibold text-subtitle">
             {" "}
-            Ingredients:
+            Ingredients
           </Text>
 
           {ingredients.length > 0 ? (
-            <View>
+            <View className="shadow-xl">
               {ingredients.map((item, index) => (
                 <Text
                   key={index}
@@ -76,19 +85,23 @@ const details = () => {
             {" "}
             Instructions
           </Text>
-          <Text className="text-black text-xl p-2 text-white ">
+          <Text className="text-black text-xl p-2 text-white shadow-xl">
             {" "}
             {drink.strInstructions}
           </Text>
         </ScrollView>
 
-        <Link
-          href={"/(tabs)/drinks"}
-          className="text-xl font-bold mt-10 mb-5 text-link text-center"
+        <TouchableOpacity
+          onPress={async () => {
+            await Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
+            router.push("/(tabs)/drinks");
+          }}
+          className="bg-emerald-600 p-2 rounded-xl m-3 w-1/3 self-center"
         >
-          {" "}
-          Back to Drinks
-        </Link>
+          <Text className="text-white text-lg text-center font-bold">
+            Drinks🍹
+          </Text>
+        </TouchableOpacity>
       </View>
     </ImageBackground>
   );

@@ -1,18 +1,20 @@
 import { mapMealToMeal } from "@/data/mealMapper";
 import { fetchMeals } from "@/services/api";
 import useFetch from "@/services/useFetch";
+import * as Haptics from "expo-haptics";
 import { useRouter } from "expo-router";
 import React, { useState } from "react";
 import {
+  ActivityIndicator,
   FlatList,
   Image,
   ImageBackground,
   Pressable,
-  ScrollView,
   Text,
   TextInput,
   View,
 } from "react-native";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
 const background = require("../../assets/images/bgocean.png");
 
 const Meals = () => {
@@ -26,8 +28,12 @@ const Meals = () => {
   const mappedMeals = data?.map(mapMealToMeal) || [];
 
   return (
-    <ImageBackground source={background} style={{ flex: 1 }} resizeMode="cover">
-      <ScrollView>
+    <GestureHandlerRootView>
+      <ImageBackground
+        source={background}
+        style={{ flex: 1 }}
+        resizeMode="cover"
+      >
         <View className="flex-1">
           <Text className="text-5xl mt-20 text-title text-center ">
             {" "}
@@ -41,19 +47,21 @@ const Meals = () => {
           <Text> </Text>
           <TextInput
             placeholder="Search Meals..."
+            placeholderTextColor="#ccc"
             value={query}
             onChangeText={setQuery}
-            className="bg-emerald-700 p-3 text-lg text-black items-center justify-center width-80 self-center mb-5"
+            className="bg-emerald-600 rounded-xl p-3 text-lg width-80 self-center mb-5"
           />
-          {loading && <Text className="text-white mt-5">Loading...</Text>}
+          {loading && <ActivityIndicator size="large" color="#ffffff" />}
           {error && <Text className="text-red-500 mt-5">{error.message}</Text>}
           {!loading && mappedMeals?.length === 0 && (
-            <Text className="text-white mt-5">No meals found </Text>
+            <Text className="text-white mt-5 text-center text-2xl">
+              No meals found 🍽️{" "}
+            </Text>
           )}
-        </View>
 
-        {/* Meal List */}
-        <View className="p-2 flex-2">
+          {/* Meal List */}
+
           <FlatList
             data={mappedMeals}
             keyExtractor={(item) => item.id.toString()}
@@ -62,18 +70,19 @@ const Meals = () => {
             columnWrapperStyle={{ justifyContent: "space-between" }}
             renderItem={({ item }) => (
               <Pressable
-                onPress={() =>
+                onPress={async () => {
                   router.push({
                     pathname: "/meal/[id]",
                     params: { id: item.id.toString() },
-                  })
-                }
+                  });
+                  await Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
+                }}
                 className="bg-white/10 m-2 p-3 rounded-xl flex-1"
               >
                 {item.image && (
                   <Image
                     source={{ uri: item.image }}
-                    className="w-full h-32 rounded-lg mb-2 self-center shadow-lg"
+                    className="w-full h-32 rounded-lg mb-2 self-center shadow-xl"
                   />
                 )}
 
@@ -88,8 +97,8 @@ const Meals = () => {
             )}
           />
         </View>
-      </ScrollView>
-    </ImageBackground>
+      </ImageBackground>
+    </GestureHandlerRootView>
   );
 };
 

@@ -1,9 +1,16 @@
 import { mapMealToMeal } from "@/data/mealMapper";
 import { fetchMealById } from "@/services/api";
 import useFetch from "@/services/useFetch";
-import { Link, useLocalSearchParams } from "expo-router";
+import * as Haptics from "expo-haptics";
+import { Link, router, useLocalSearchParams } from "expo-router";
 import { useContext } from "react";
-import { ImageBackground, View } from "react-native";
+import {
+  ActivityIndicator,
+  ImageBackground,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
 import { FavoriteContent } from "../../context/FavoriteContent";
 import MealCard from "../components/MealCard";
 const background = require("../../assets/images/bgocean.png");
@@ -15,6 +22,11 @@ const details = () => {
   const mealId = Number(Array.isArray(id) ? id[0] : id);
   const isFavorite = Favorites.some((m) => m.id === mealId);
   const { data, loading, error } = useFetch(() => fetchMealById(id as string));
+  if (loading) return <ActivityIndicator size="large" color="#ffffff" />;
+  if (error)
+    return (
+      <Text className="text-red-500 text-white mt-5"> {error.message}</Text>
+    );
 
   if (!data) return null;
 
@@ -42,18 +54,29 @@ const details = () => {
           isFavorite={isFavorite}
         ></MealCard>
 
-        <Link
-          href={"/(tabs)/meals"}
-          className="text-xl font-bold mt-7 text-link text-center"
+        <TouchableOpacity
+          onPress={async () => {
+            await Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
+            router.push("/(tabs)/meals");
+          }}
+          className="bg-emerald-600 p-2 rounded-xl mt-3 w-1/3 self-center"
         >
-          Back to Meals
-        </Link>
-        <Link
-          href={"/(tabs)/favorites"}
-          className="text-xl font-bold m-3 text-link text-center "
+          <Text className="text-white text-lg text-center font-bold">
+            Meals🍽️
+          </Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity
+          onPress={async () => {
+            await Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
+            router.push("/(tabs)/favorites");
+          }}
+          className="bg-red-100 p-2 rounded-xl m-3 w-1/3 self-center"
         >
-          Favorited Meals
-        </Link>
+          <Text className="text-red-900 text-center text-lg font-bold">
+            ❤️ Favorites
+          </Text>
+        </TouchableOpacity>
       </View>
     </ImageBackground>
   );
