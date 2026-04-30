@@ -59,9 +59,9 @@ const details = () => {
             await Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
             router.push("/(tabs)/meals");
           }}
-          className="bg-emerald-600 p-2 rounded-xl mt-3 w-1/3 self-center shadow-xl"
+          className="bg-emerald-100 p-2 rounded-xl mt-3 w-1/3 self-center shadow-xl"
         >
-          <Text className="text-white text-lg text-center font-semibold">
+          <Text className="text-emerald-900 text-lg text-center font-semibold">
             Meals🍽️
           </Text>
         </TouchableOpacity>

@@ -47,10 +47,10 @@ const Meals = () => {
           <Text> </Text>
           <TextInput
             placeholder="Search Meals..."
-            placeholderTextColor="#ccc"
+            placeholderTextColor="#000000"
             value={query}
             onChangeText={setQuery}
-            className="bg-emerald-600 rounded-xl p-3 text-lg width-80 self-center mb-5"
+            className="bg-emerald-200 rounded-xl p-3 text-lg w-1/2 self-center mb-5"
           />
           {loading && <ActivityIndicator size="large" color="#ffffff" />}
           {error && <Text className="text-red-500 mt-5">{error.message}</Text>}
