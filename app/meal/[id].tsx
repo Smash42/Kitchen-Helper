@@ -59,7 +59,7 @@ const details = () => {
             await Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
             router.push("/(tabs)/meals");
           }}
-          className="bg-emerald-100 p-2 rounded-xl mt-3 w-1/3 self-center shadow-xl"
+          className="bg-emerald-100 p-3 rounded-xl mt-3 w-1/3 self-center shadow-xl"
         >
           <Text className="text-emerald-900 text-lg text-center font-semibold">
             Meals🍽️
@@ -71,7 +71,7 @@ const details = () => {
             await Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
             router.push("/(tabs)/favorites");
           }}
-          className="bg-red-100 p-2 rounded-xl m-3 w-1/3 self-center shadow-xl"
+          className="bg-red-100 p-3 rounded-xl m-3 mb-10 w-1/3 self-center shadow-xl"
         >
           <Text className="text-red-900 text-center text-lg font-semibold">
             ❤️ Favorites

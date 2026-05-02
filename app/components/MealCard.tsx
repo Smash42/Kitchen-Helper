@@ -52,15 +52,15 @@ const MealCard: React.FC<MealCardProps> = ({
         {meal.image && (
           <Image
             source={{ uri: meal.image }}
-            className="w-60 h-40 rounded-lg mb-2 items-center justify-center self-center mt-5 shadow-2xl"
+            className="w-60 h-40 rounded-lg mb-1 items-center justify-center self-center mt-5 shadow-2xl"
           />
         )}
-        <ScrollView className="mt-5 shadow-2xl">
+        <ScrollView className="mt-3 shadow-2xl">
           <Text className=" text-2xl text-center mt-5 font-semibold text-subtitle">
             {" "}
             Ingredients
           </Text>
-          <View className="mt-4 px-4 shadow-xl">
+          <View className="mt-3 px-4 shadow-xl">
             {meal.ingredients?.length > 0 ? (
               meal.ingredients.map((item, index) => (
                 <Text key={index} className="text-white text-lg mb-1">

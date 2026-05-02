@@ -29,14 +29,16 @@ const details = () => {
   if (!drink) return <Text className="text-white mt-5">Drink not found</Text>;
 
   const getIngredients = (drink: any) => {
-    const ingredients = [];
+    const ingredient = drink[`strIngredient${id}`];
+    const measure = drink[`strMeasure${id}`];
+    const ingredients: { ingredient: string; measure: string }[] = [];
     for (let i = 1; i <= 18; i++) {
       const ingredient = drink[`strIngredient${i}`];
       const measure = drink[`strMeasure${i}`];
-      if (ingredient && ingredient.trim() !== "") {
+      if (ingredient && String(ingredient).trim() !== "") {
         ingredients.push({
-          ingredient: ingredient,
-          measure: measure?.trim || "",
+          ingredient: String(ingredient),
+          measure: measure ? String(measure).trim() : "",
         });
       }
     }
@@ -96,7 +98,7 @@ const details = () => {
             await Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
             router.push("/(tabs)/drinks");
           }}
-          className="bg-emerald-100 p-2 rounded-xl m-3 w-1/3 self-center shadow-xl"
+          className="bg-emerald-100 p-3 rounded-xl mt-5 mb-10 w-1/3 self-center shadow-xl"
         >
           <Text className="text-emerald- text-lg text-center font-semibold">
             Drinks🍹
